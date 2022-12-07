@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
 import { useGameContext } from '../../context/GameContext'
-import surveyData from '../../../utils/surveyData'
+import surveyData from '../../../utils/surveyData.js'
 
 export const placeholder = {
     "Tell me something specific you have lost more than once": [
