@@ -16,15 +16,17 @@ useEffect(() => {
       spread: 70,
       origin: { y: 0.6 },
     });
-  }, []);
+}, []);
+    
+    const { player1, player2 } = state.playerDetails;
     
     return (
         <ModalContainer>
             <Modal>
                 <h1>Final Score</h1>
-                <h2>{state.playerDetails.player1}: {scoreBoard.player1}</h2>
-                <h2>{state.playerDetails.player2}: {scoreBoard.player2}</h2>
-                <h2>Winner: {scoreBoard.player1 === scoreBoard.player2 ? "Yo it's a draw" : scoreBoard.player1 > scoreBoard.player2 ? `${scoreBoard.player1} Wins` : `${scoreBoard.player2} Wins` }</h2>
+                <h2>{player1}: {scoreBoard.player1}</h2>
+                <h2>{player2}: {scoreBoard.player2}</h2>
+                <h2>Winner: {scoreBoard.player1 === scoreBoard.player2 ? "Yo it's a draw" : scoreBoard.player1 > scoreBoard.player2 ? `${player1} Wins` : `${player2} Wins` }</h2>
                 <button onClick={handleClick}>Close</button>
             </Modal>
         </ModalContainer>
