@@ -1,17 +1,30 @@
-import { useCallback, useEffect, useState } from 'react'
-import { GameBoard, Nav, Footer } from './components'
+import { Routes, Route } from "react-router-dom"
+import { GameBoard, Nav, Footer, Welcome, GetDetails, UploadData, ErrorFallback  } from './components'
 import './App.css'
-import styled from 'styled-components'
-import surveyData from '../utils/surveyData';
+import styled from 'styled-components';
+import { useGameContext } from './context/GameContext'
+import {ErrorBoundary} from 'react-error-boundary'
+
 
 function App() {
-
+  const { state } = useGameContext();
+  
   return (
-    <Main>
+    <>
       <Nav />
-      {<GameBoard survey={surveyData} />}
+       <ErrorBoundary
+      FallbackComponent={ErrorFallback}
+      >
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path='/getDetails' element={<GetDetails />} />
+        <Route path='/surveyData' element={<UploadData />} />
+        <Route path="/game" element={<GameBoard survey={state.surveyData} />} />
+        <Route path="*" element={<h1>404: Not Found</h1>} />
+      </Routes>
+    </ErrorBoundary>
       <Footer />
-    </Main>
+    </>
   )
 }
 
@@ -57,6 +70,4 @@ const Main = styled.div`
   }
 
 `
-
-
-export default App
+export default App;

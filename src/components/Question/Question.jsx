@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useGameContext } from '../../context/GameContext'
 
 export const Question = ({ question, options, handleScore, scoreBoard, currentQuestion }) => {
+  
+  const { state: {playerDetails} } = useGameContext()
+
   return (
     <QuestionContainer>
       <h1>{question}</h1>
       <PlayerScore>
-         <h3>Player 1 Score: {scoreBoard.player1}</h3>
-         <h3>Player 2 Score: {scoreBoard.player2}</h3>
+         <h3>{playerDetails.player1 ? playerDetails.player1 : "team 1"} Score: {scoreBoard.player1}</h3>
+         <h3>{playerDetails.player2 ? playerDetails.player2 : "team 2"} Score: {scoreBoard.player2}</h3>
       </PlayerScore>
       <Questions>
       {options.map((option) => (
@@ -74,8 +78,6 @@ const Questions = styled.div`
     @media (max-width: 480px) {
         grid-template-columns: 1fr;
     }
-
-
 `
 
 

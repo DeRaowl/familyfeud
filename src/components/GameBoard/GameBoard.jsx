@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Question } from '../Question/Question'
 import styled from 'styled-components'
-
-// Math to get random number between 1 to 1000
-const getRandomNumber = () => {
-    return Math.floor(Math.random() * 1000) + 1
-}
+import { useGameContext } from '../../context/GameContext'
+import { FinalScoreModal } from '../FinalScore/FinalScoreModal'
 
 export const GameBoard = ({ survey }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(getRandomNumber())
+    const [surveyData] = useState(survey)
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [showModal, setShowModal] = useState(false)
   const [scoreBoard, setScoreBoard] = useState({
     player1: 0,
     player2: 0,
@@ -21,21 +20,25 @@ export const GameBoard = ({ survey }) => {
 
   const handleNextQuestion = () => {
       setScoreForCurrentOption(0)
-      setCurrentQuestion(currentQuestion + 1)
+      if (Object.keys(surveyData).length - 1 > currentQuestion) {
+          setCurrentQuestion(currentQuestion + 1)
+      } else {
+            setShowModal(true)
+    }
   }
 
-  const handleScoreBoard = (player) => {
-    setScoreBoard({
-      ...scoreBoard,
-      [player]: scoreBoard[player] + scoreForCurrentOption,
-    })
-  }
+    const handleScoreBoard = (player) => {
+        setScoreBoard({
+            ...scoreBoard,
+            [player]: scoreBoard[player] + scoreForCurrentOption,
+        })
+    }
 
     return (
         <GameBoardContainer>
             <Question
-               question={Object.keys(survey)[currentQuestion]}
-               options={survey[Object.keys(survey)[currentQuestion]]}
+               question={Object.keys(surveyData)[currentQuestion]}
+               options={surveyData[Object.keys(surveyData)[currentQuestion]]}
                handleScore={handleScore}
                scoreBoard={scoreBoard}
                currentQuestion={currentQuestion}
@@ -48,6 +51,10 @@ export const GameBoard = ({ survey }) => {
                 <Button onClick={handleNextQuestion}>Next Question</Button>
                 <Button onClick={() => handleScoreBoard('player2')}>Reward Player 2</Button>
             </ButtonContainer>
+
+            {
+                showModal && <FinalScoreModal scoreBoard={scoreBoard} onClick={setShowModal} />
+            }
         </GameBoardContainer>
     )
 }
@@ -58,14 +65,13 @@ const GameBoardContainer = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #f5f5f5;
+    width: 800px;
 
     p {
         margin: 0;
         font-size: 30px;
     }
 `
-
-
     
 const ButtonContainer = styled.div`
     display: flex;

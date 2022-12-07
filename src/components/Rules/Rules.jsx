@@ -33,7 +33,7 @@ const Hamburger = styled.div`
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 10000;
 
     &:focus {
         outline: none;
@@ -76,6 +76,7 @@ const RulesMenu = styled.div`
     left: 0;
     transition: transform 0.3s ease-in-out;
     margin: 0 auto;
+    z-index: 10000;
     p {
         font-size: 30px;
         margin: 25px auto;
