@@ -66,6 +66,7 @@ const GameBoardContainer = styled.div`
     justify-content: center;
     background-color: #f5f5f5;
     width: 800px;
+    max-width: 100%;
 
     p {
         margin: 0;

@@ -38,13 +38,17 @@ const GetDetailsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 50vh;
   width: 100%;
+  max-width: 800px;
+
 
   label {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 
   input {
@@ -70,8 +74,30 @@ const GetDetailsContainer = styled.div`
 
   textarea {
     width: 100%;
-    height: 100%;
     margin: 10px 0;
+    resize: vertical;
+    height: 316px;
+    min-height: 316px;
+    overflow-y: scroll;
+    font-family: Roboto Mono,Consolas,Courier New,monospace;
+    font-size: .9rem;
+    line-height: 1.45;
+    text-shadow: 0.015em 0.015em 0 #666;
+    color: #666;
+    padding: calc(0.75rem - 1px);
+    background-color: #fff;
+    box-shadow: inset 0 5px 2px rgba(0,0,0,.075);
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 4px;
+
+    &:focus {
+      outline: none;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
   }
 
   code {
@@ -88,6 +114,25 @@ const GetDetailsContainer = styled.div`
       width: 100%;
       height: 100%;
       overflow: scroll;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 100vh;
+
+    input {
+      width: 100%;
+
+      &:focus {
+        outline: none;
+
+        &::placeholder {
+          color: transparent;
+
+        }
+
+      }
+
     }
   }
 
