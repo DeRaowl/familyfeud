@@ -4,16 +4,6 @@ import styled from 'styled-components'
 import confetti from 'canvas-confetti';
 
 export const Welcome = () => {
-  let Name = "User";
-
-  let functions = () => {}
-   useEffect(() => {
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.7 },
-    });
-  }, []);
   return (
     <WelcomeContainer>
       <h1>Welcome to the Family Feud Game!</h1>
