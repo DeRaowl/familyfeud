@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import confetti from 'canvas-confetti';
 
 export const Welcome = () => {
+  let Name = "User";
+
+  let functions = () => {}
    useEffect(() => {
     confetti({
       particleCount: 150,
