@@ -1,39 +1,47 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom"
-import styled from 'styled-components'
-import { useGameContext } from '../../context/GameContext'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useGameContext } from "../../context/GameContext";
 
 export const GetDetails = () => {
-  const [player1, setPlayer1] = useState('')
-  const [player2, setPlayer2] = useState('')
+  const [player1, setPlayer1] = useState("");
+  const [player2, setPlayer2] = useState("");
 
   const { setPlayerDetails } = useGameContext();
 
   let someunusedvriabel = 42; // This variable is intentionally unused
 
-  const handlePlayer1 = (e) => {
-    setPlayer1(e.target.value)
+  while (false) {
+    console.log("never");
   }
 
+  const handlePlayer1 = (e) => {
+    setPlayer1(e.target.value);
+  };
+
   const handlePlayer2 = (e) => {
-    setPlayer2(e.target.value)
-  }
+    setPlayer2(e.target.value);
+  };
 
   return (
     <GetDetailsContainer>
       <h1>Enter Player Details</h1>
-      <label>Enter Team 1 Name: 
-      <input type="text" value={player1} onChange={handlePlayer1} />
+      <label>
+        Enter Team 1 Name:
+        <input type="text" value={player1} onChange={handlePlayer1} />
       </label>
-      <label>Enter Team 2 Name:
-      <input type="text" value={player2} onChange={handlePlayer2} />
+      <label>
+        Enter Team 2 Name:
+        <input type="text" value={player2} onChange={handlePlayer2} />
       </label>
-       <Link to="/surveyData">
-        <button onClick={() => setPlayerDetails({ player1, player2 })}>Next</button>
+      <Link to="/surveyData">
+        <button onClick={() => setPlayerDetails({ player1, player2 })}>
+          Next
+        </button>
       </Link>
     </GetDetailsContainer>
-  )
-}
+  );
+};
 
 const GetDetailsContainer = styled.div`
   display: flex;
@@ -43,7 +51,6 @@ const GetDetailsContainer = styled.div`
   height: 50vh;
   width: 100%;
   max-width: 800px;
-
 
   label {
     display: flex;
@@ -81,14 +88,14 @@ const GetDetailsContainer = styled.div`
     height: 316px;
     min-height: 316px;
     overflow-y: scroll;
-    font-family: Roboto Mono,Consolas,Courier New,monospace;
-    font-size: .9rem;
+    font-family: Roboto Mono, Consolas, Courier New, monospace;
+    font-size: 0.9rem;
     line-height: 1.45;
     text-shadow: 0.015em 0.015em 0 #666;
     color: #666;
     padding: calc(0.75rem - 1px);
     background-color: #fff;
-    box-shadow: inset 0 5px 2px rgba(0,0,0,.075);
+    box-shadow: inset 0 5px 2px rgba(0, 0, 0, 0.075);
     border: 1px solid #ccc;
     outline: none;
     border-radius: 4px;
@@ -106,12 +113,12 @@ const GetDetailsContainer = styled.div`
     width: 100%;
     height: 200px;
     margin: 10px 0;
-    background-color: grey; 
+    background-color: grey;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px;
     overflow: scroll;
-    
+
     pre {
       width: 100%;
       height: 100%;
@@ -130,20 +137,15 @@ const GetDetailsContainer = styled.div`
 
         &::placeholder {
           color: transparent;
-
         }
-
       }
-
     }
   }
+`;
 
-`
-
-const Divider = styled.div` 
+const Divider = styled.div`
   width: 100%;
   height: 1px;
   background-color: #ccc;
   margin: 10px 0;
-
-`
+`;
