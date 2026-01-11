@@ -9,6 +9,8 @@ export const GetDetails = () => {
 
   const { setPlayerDetails } = useGameContext();
 
+  let someunusedvriabel = 42; // This variable is intentionally unused
+
   const handlePlayer1 = (e) => {
     setPlayer1(e.target.value)
   }

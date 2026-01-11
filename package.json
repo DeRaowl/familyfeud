@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "knip": "knip"
   },
   "dependencies": {
     "canvas-confetti": "^1.6.0",
@@ -19,9 +20,12 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@types/node": "^25.0.6",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "knip": "^5.80.2",
+    "typescript": "^5.9.3",
     "vite": "^3.2.3"
   }
 }
